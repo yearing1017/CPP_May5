@@ -23,6 +23,19 @@ int main()
     PRINT_ARRAY(numbers, 4)
 
     return 0;
+
+    /*
+        array[0] = 0
+        array[1] = 1
+        array[2] = 2
+        array[3] = 3
+        numbers = 0x7ffeeefe0420
+        p = 0x7ffeeefe0428
+        array[0] = 0
+        array[1] = 10
+        array[2] = 20
+        array[3] = 30
+    */
 }
 
 int bound()
