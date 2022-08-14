@@ -59,3 +59,10 @@ int tp3()
     cout << "pt = (" << pt.x << ", " << pt.y << ")" << endl;
     return 0;
 }
+
+int main()
+{
+    tp1();
+    tp2();
+    tp3();
+}
