@@ -2,8 +2,20 @@
 
 ### 指针相关
 - 指针基础
-    - 指针写法`int * num_ref`，取内容写法`*num`
+    - 指针存储的是地址，写法：`int * p1 = NULL`
+    - 取变量num的地址：`p2 = &num`
+    - 指针指向内容赋值：`*p1 = 20`
 - 指针与结构体
+    - 对象：`Student stu = {"Yu", 2000, true};`
+    - 指针：`Student * pStu = &stu;`
+    - 指针使用->来指向member：`pStu->member`
+    - 对象变量使用 `.` 来指向member：`(*pStu).member || stu.member` 
+    - 指针自身也有地址：`int num = 10; int * p = &num; int ** pp = &p;`
+- const 指针
+    - `int foo(const char * p){ char * p2 = p; return 0; }` const char * 的指针不能用来初始化char *类型指针
+    - `const int * p1 = &num;` 不能通过p1来改变p1指向的值，但可以改变p1指向的地址
+    - `int * const p2 = &num;` 不能改变p2指向的地址，但可以通过p2来改变p2指向的值
+    - `const int* const p3 = &num;` 都不可以改变
 - 指针与数组
 - 指针的偏移与越界
 - c和c++的动态分配内存与释放
