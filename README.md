@@ -1,4 +1,55 @@
-## CPP
+
+
+
+
+
+
+# C_Primer_Plus
+
+## 关于
+
+📚 本仓库是面向 C/C++ 的基础知识总结，包括语言、数据结构。
+
+🙏 仓库内容如有错误或改进欢迎 issue 或 pr. 由于本人水平有限，仓库中的知识点有来自本人原创、读书笔记、书籍、博文等，非原创均已标明出处，如有遗漏，请 issue 提出。本仓库遵循 [CC BY-NC-SA 4.0（署名 - 非商业性使用 - 相同方式共享）](https://github.com/huihut/interview/blob/master/LICENSE) 协议，转载请注明出处，不得用于商业目的。
+
+## 目录
+* [STL](#stl)
+* [CPP基础](#cpp)
+
+
+<a id="stl"></a>
+
+## STL
+
+### STL 索引
+
+[STL 方法含义索引](https://github.com/yearing1017/CPP_May5/tree/master/STL)
+
+### STL 容器
+
+容器 | 底层数据结构 | 时间复杂度 | 有无序 | 可不可重复 | 其他
+---|---|---|---|---|---
+[array](https://github.com/yearing1017/CPP_May5/tree/master/STL#array)|数组|随机读改 O(1)|无序|可重复|支持随机访问
+[vector](https://github.com/yearing1017/CPP_May5/tree/master/STL#vector)|数组|随机读改、尾部插入、尾部删除 O(1)<br/>头部插入、头部删除 O(n)|无序|可重复|支持随机访问
+[deque](https://github.com/yearing1017/CPP_May5/tree/master/STL#deque)|双端队列|头尾插入、头尾删除 O(1)|无序|可重复|一个中央控制器 + 多个缓冲区，支持首尾快速增删，支持随机访问
+[forward_list](https://github.com/yearing1017/CPP_May5/tree/master/STL#forward_list)|单向链表|插入、删除 O(1)|无序|可重复|不支持随机访问
+[list](https://github.com/yearing1017/CPP_May5/tree/master/STL#list)|双向链表|插入、删除 O(1)|无序|可重复|不支持随机访问
+[stack](https://github.com/yearing1017/CPP_May5/tree/master/STL#stack)|deque / list|顶部插入、顶部删除 O(1)|无序|可重复|deque 或 list 封闭头端开口，不用 vector 的原因应该是容量大小有限制，扩容耗时
+[queue](https://github.com/yearing1017/CPP_May5/tree/master/STL#queue)|deque / list|尾部插入、头部删除 O(1)|无序|可重复|deque 或 list 封闭头端开口，不用 vector 的原因应该是容量大小有限制，扩容耗时
+[priority_queue](https://github.com/yearing1017/CPP_May5/tree/master/STL#priority_queue)|vector + max-heap|插入、删除 O(log<sub>2</sub>n)|有序|可重复|vector容器+heap处理规则
+[set](https://github.com/yearing1017/CPP_May5/tree/master/STL#set)|红黑树|插入、删除、查找 O(log<sub>2</sub>n)|有序|不可重复|
+[multiset](https://github.com/yearing1017/CPP_May5/tree/master/STL#multiset)|红黑树|插入、删除、查找 O(log<sub>2</sub>n)|有序|可重复|
+[map](https://github.com/yearing1017/CPP_May5/tree/master/STL#map)|红黑树|插入、删除、查找 O(log<sub>2</sub>n)|有序|不可重复|
+[multimap](https://github.com/yearing1017/CPP_May5/tree/master/STL#multimap)|红黑树|插入、删除、查找 O(log<sub>2</sub>n)|有序|可重复|
+[unordered_set](https://github.com/yearing1017/CPP_May5/tree/master/STL#unordered_set)|哈希表|插入、删除、查找 O(1) 最差 O(n)|无序|不可重复|
+[unordered_multiset](https://github.com/yearing1017/CPP_May5/tree/master/STL#unordered_multiset)|哈希表|插入、删除、查找 O(1) 最差 O(n)|无序|可重复|
+[unordered_map](https://github.com/yearing1017/CPP_May5/tree/master/STL#unordered_map)|哈希表|插入、删除、查找 O(1) 最差 O(n)|无序|不可重复|
+[unordered_multimap](https://github.com/yearing1017/CPP_May5/tree/master/STL#unordered_multimap)|哈希表|插入、删除、查找 O(1) 最差 O(n)|无序|可重复|
+
+
+<a id="cpp"></a>
+
+## CPP基础
 
 ### 指针相关
 - 指针基础
@@ -17,11 +68,24 @@
     - `int * const p2 = &num;` 不能改变p2指向的地址，但可以通过p2来改变p2指向的值
     - `const int* const p3 = &num;` 都不可以改变
 - 指针与数组
+    - 数组名的指针 指向 数组首元素的地址
 - 指针的偏移与越界
+    - p + num || num + p 指向数组p的第num个元素
+    - p - num 指向数组p的第-num个元素
+    - 越界：`int num = 0; int * p = &num; p[-1] = 2; //out of bound p[0] = 3; //okay *(p+1) = 4; //out of bound`
+- 指针和数组的区别
+    - 数组是一个constant指针
+    - sizeof 可以获得数组所有元素的size`int numbers[4] = {0, 1, 2, 3}; cout << sizeof(numbers) << endl; //4*sizeof(int)`
+    - 指针的size `int * p = numbers; cout << sizeof(p) << endl; // 4 or 8`
 - c和c++的动态分配内存与释放
+    - c语言的malloc & free
+    - c++的new和delete
+        - new() & new[]
+        - delete & delete[]
 
 ### 函数
 - 函数基础
+    - .h头文件用来声明函数；func.cpp实现函数；main.cpp调用函数
 - 值参数
     - 传递进来的基本类型参数是一份copy；修改该copy，原始数据不会受影响
 - 指针参数
