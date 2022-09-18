@@ -1,4 +1,4 @@
-[STL 详细文档](https://github.com/yearing1017/CPP_May5/tree/master/STL/STL.md)
+[STL 详细文档](https://github.com/yearing1017/CPP_May5/tree/main/STL/STL.md)
 
 # 容器（containers）
 
